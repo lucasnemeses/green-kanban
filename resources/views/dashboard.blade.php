@@ -4,6 +4,6 @@
         <x-sidebar-top />
         <x-sidebar-right />
         <livewire:kanban />
-        {{-- <livewire:modal-create-card /> --}}
+        <livewire:modal-create-card />
     </div>
 </x-app-layout>

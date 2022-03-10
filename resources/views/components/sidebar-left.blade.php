@@ -15,8 +15,12 @@
 
             <div class="relative">
                 <div class="w-5 m-auto after:content-[''] after:h-full after:w-1 after after:bg-black after:absolute after:top-0 after:left-0">
-                    <x-icons.bell-stroke class="transition cursor-pointer fill-black w-full h-full"/>
+                    <x-icons.board class="transition cursor-pointer fill-black w-full h-full"/>
                 </div>
+            </div>
+
+            <div class="w-5 m-auto">
+                <x-icons.bell-stroke class="{{ $iconStyles }}"/>
             </div>
 
             <div class="w-5 h-5 m-auto">
@@ -42,8 +46,8 @@
 
         <div class="group transition cursor-pointer rw-6 w-6 h-6 m-auto bg-pink rounded-full shadow">
             <div class="flex justify-center items-center w-full h-full relative">
-                <x-icons.plus class="fill-white w-4 h-4 z-10"/>
-                <span class="hidden group-hover:block transition rounded-lg py-1 pl-6 pr-2 bg-pink w-max text-white text-base font-extrabold uppercase absolute" style="top:50%;left:0;transform:translateY(-50%)">Criar card</span>
+                <x-icons.plus class="fill-white w-4 h-4 z-10 pointer-events-none"/>
+                <span data-modal="open" class="hidden group-hover:block transition rounded-lg py-1 pl-6 pr-2 bg-pink w-max text-white text-base font-extrabold uppercase absolute" style="top:50%;left:0;transform:translateY(-50%)">Criar card</span>
             </div>
         </div>
     </div>
@@ -63,3 +67,16 @@
         </nav>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        document.querySelector('[data-modal="open"]').addEventListener('click', function(e) {
+            document.querySelector('[data-modal="container"]').classList.remove('hidden');
+        });
+
+        document.querySelector('[data-modal="overlay"]').addEventListener('click', function(e) {
+            document.querySelector('[data-modal="container"]').classList.add('hidden');
+            document.querySelector('#form-card').reset();
+        });
+    });
+</script>

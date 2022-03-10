@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->string('project');
+            $table->string('category');
+            $table->string('name');
+            $table->text('description');
+            $table->json('team');
+            $table->date('forecast');
             $table->timestamps();
         });
     }
@@ -26,6 +32,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('cards');
+        Schema::enableForeignKeyConstraints();
     }
 };
