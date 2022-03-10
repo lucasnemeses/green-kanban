@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->json('team');
-            $table->date('forecast');
+            $table->datetime('forecast');
+            $table->string('list');
+            $table->integer('ordem');
             $table->timestamps();
         });
     }

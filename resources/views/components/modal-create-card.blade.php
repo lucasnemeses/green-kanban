@@ -1,5 +1,4 @@
-<div data-modal="container" class="@if($hidden) hidden @endif 
-    w-full h-full absolute top-0 left-0 flex items-center justify-center">
+<div data-modal="container" class="{{ $hidden ? 'hidden' : '' }} w-full h-full absolute top-0 left-0 flex items-center justify-center">
     <div data-modal="overlay" class="w-full h-full absolute top-0 left-0 bg-modal z-20"></div>
     <div class="w-full max-w-3xl bg-white rounded-md p-8 z-30">
         <h3 class="text-3xl font-semibold mb-4 text-green-87">Novo Card</h3>
@@ -37,7 +36,7 @@
             <div class="flex space-x-4">
                 <div class="flex flex-col w-full mb-4">
                     <label class="font-bold text-green-75">Equipe</label>
-                    <input data-select type="text" readonly class="flex justify-start items-center py-2 px-3 shadow-md rounded-lg h-full w-full border border-green-75">
+                    <input data-select type="text" wire:model.defer="teamFake" readonly class="flex justify-start items-center py-2 px-3 shadow-md rounded-lg h-full w-full border border-green-75">
                     <div class="relative z-10">
                         <div data-select-list class="hidden absolute top-0 w-full bg-white rounded-lg border border-green-75 p-3 flex flex-col space-y-1">
                             <input data-checkbox class="w-0 h-0 opacity-0" id="team-option-1" type="checkbox" wire:model.defer="team" value="Pedro Henrique">
@@ -70,8 +69,10 @@
             </div>
 
             <div class="flex justify-center mt-8">
-                <button type="submit" class="@if(!empty($loading)) pointer-events-none @endif flex justify-center items-center hover:opacity-90 bg-green-87 text-green-38 font-extrabold px-6 py-2 rounded-md">
-                    <x-icons.spinner class="@if(!empty($loading)) hidden @endif animate-spin w-4 h-4 text-green-38 mr-4" />
+                <button type="submit" class="{{ $loading ? 'pointer-events-none' : '' }} pointer flex justify-center items-center hover:opacity-90 bg-green-87 text-green-38 font-extrabold px-6 py-2 rounded-md">
+                    @if ($loading)
+                        <x-icons.spinner class="animate-spin w-4 h-4 text-green-38 mr-4"/>
+                    @endif
                     Cadastrar
                 </button>
             </div>

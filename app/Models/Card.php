@@ -15,6 +15,8 @@ class Card extends Model
         "name",
         "description",
         "team",
-        "foreacast"
+        "foreacast",
+        "list",
+        "ordem",
     ];
 }
